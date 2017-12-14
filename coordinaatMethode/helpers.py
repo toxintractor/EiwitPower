@@ -51,9 +51,9 @@ def inputToList():
     n = 0;
     pt = []
     # eiwitInput = raw_input("voer de eiwit in: ")
-    #eiwitInput = "hhphhhph"
+    eiwitInput = "hhphhhph"
     #eiwitInput = "HPHPPHHPHPPHPHHPPHPH"
-    eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
+    #eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
     #eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
     for i in eiwitInput.upper():
         if i != "H" and i != "P":

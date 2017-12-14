@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/Users/Lucien/Documents/GitHub/Scoopie/gridMethode')
 from helpers import *
 
 class EiwitStreng:

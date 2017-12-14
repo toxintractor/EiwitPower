@@ -9,7 +9,7 @@ def eiwitList():
     eiwit = []
     
     # eiwitInput bevat de eiwitstreng
-    eiwitInput = "HPHPPHHPHPPHPHHPPHPH"
+    eiwitInput = "HHPHHHPH"
 
     # voegt aan elk aminozuur een index toe en zet het in de eiwit array
     for i in eiwitInput.upper():

@@ -21,7 +21,21 @@ NetworkX v2.0 - https://networkx.github.io/
 
 # Running the tests
 
-In this repository you will find different maps for different methods and algoritms. The name of the map includes which algoritm the files inside of are based on. There are files for defining functions and there are files containing the main functions. Running these main programs will execute the different algoritms to find possible foldings for the different proteins.
+In this repository you will find different maps for different methods and algorithms. The name of the map includes which method is used and the name of the files include which algorithm. There are files for defining functions, the helpers files, and there are files containing the main functions. Running these main programs will execute the different algorithms to find possible foldings for the different proteins.
+
+Step 1: Choose a method (coordinate or grid)
+
+Step 2: Within the helpers file, change the variable "eiwitInput" in the "eiwitList()" function to the intended protein
+
+Step 3: Run one of the main files to obtain the results of that algorithm for the specified protein
+
+The different algorithms are:
+
+Brute Force - Depth First Pruning: This algorithm will make every possible folding for a protein by variating all bonds between all amino acids with every possibilty.
+
+Monte Carlo: This algorithm will, for a given amount of iterations, output a possible solution for a folding of a protein by randomly choosing a direction for each bond of each amino acid.
+
+Simulated Annealing: This algorithm will try to find the global best solution for the foldings by taking in account the result of the previously found best solutions and slightly variating single bonds within the folding with the aim of getting a better solution.
 
 # Built With
 

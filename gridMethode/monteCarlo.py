@@ -1,201 +1,86 @@
-import numpy as np
-from itertools import product
-import time
-from random import randint
+from helpers import *
 
-
-start_time = time.clock()
-
-class EiwitStreng:
-    def __init__(self, grid, score):
-        self.grid = grid
-        self.score = score
-
-
-#Functie vraagt input aan en zet het om in een array met index.
-def inputToList():
-    n = 0;
-    pt = []
-    #eiwitInput = raw_input("voer de eiwit in: ")
-    #eiwitInput = "hhphhhph"
-    eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
-
-    for i in eiwitInput.upper():
-        if i != "H" and i != "P":
-            print "Het eiwit mag geen", i, "bevatten"
-            return "Het eiwit mag geen", i, "bevatten"
-        pt.append(i + str(n))
-        n +=1
-
-    return pt
-
-#Deze functie heeft een +1 score voor elke H's die naast elkaar staan.
-def counterFirst():
-    counter  = 0
-    for i in range(len(inputToList())-1):
-        if inputToList()[i][0] == "H" and inputToList()[i+1][0] == "H":
-            counter += 1
-    return counter
-
-#Functie maakt een Grid-Array aan de hand van de ingegeven eiwit string.
-def makeGrid(inputList):
-    grid = [["_"]* ((len(inputList)*2)-1) for i in (range(len(inputList*2)-1))]
-    grid[len(inputToList())-1][len(inputToList())-1] = inputList[0]
-    grid = np.array(grid, dtype='S256')
-
-    return grid
-
-#Deze functie plaats een nieuwe aminozuur in de grid adh van opgegeven richting
-def moveAmino(point, direction):
-    newPoint = (0,0)
-
-    if direction == "l":
-        newPoint = (point[0], point[1]-1)
-    elif direction == "r":
-        newPoint = (point[0], point[1]+1)
-    elif direction == "u":
-        newPoint = (point[0]-1, point[1])
-    elif direction == "d":
-        newPoint = (point[0]+1, point[1])
-
-    return newPoint
-
-def counterScore(grid):
-
-    score = 0
-    #print i
-    for j in range(len(grid)-1):
-        #print i[j]
-        for k in range(len(grid[j])-1):
-            #print i[j][k], '-', i[j+1][k], '-', i[j][k+1]
-            if grid[j][k] != '_' and grid[j][k][0] == 'H':
-                if grid[j+1][k] != '_' and grid[j+1][k][0] == 'H':
-                    score += 1
-                if grid[j][k+1] != '_' and grid[j][k+1][0] == 'H':
-                    score += 1
-
-        #print 'score:', (score - counterFirst())
-
-    return score - counterFirst()
-
-#Deze functie gaat alle mogelijkheden af waarin het eiwit zich kan vouwen.
-def cproduct():
-    aListOfList = [["l", "r", "u", "d"] for aantal in range(len(inputToList())-2)]
-    teller = [0,0]
-    gridStart = makeGrid(inputToList())
-    punt = ((len(inputToList()) - 1), (len(inputToList()) - 1))
-    print punt
-    punt = moveAmino(punt, "r")
-    gridStart[punt[0]][punt[1]] = inputToList()[1]
-    print gridStart
-    highScore = 0
-    highScoreList = []
-    indexes = [0] * len(aListOfList)
-
-    while True:
-        teller[0] += 1
-        #yield [l[i] for l, i in zip(aListOfList, indexes)]
-        gridResult = np.copy(gridStart)
-        punt = ((len(inputToList()) - 1), (len(inputToList())))
-        #zm = [l[i] for l, i in zip(aListOfList, indexes)]
-        index = -1
-        for l, i in zip(aListOfList, indexes):
-            index += 1
-            punt = moveAmino(punt, l[i])
-
-            if gridResult[punt[0]][punt[1]] != '_':
-                for i in enumerate(indexes[index+1:]):
-                    if indexes[i[0]+(index+1)] != 3:
-                        indexes[i[0] + (index + 1)] = 3
-                break
-            gridResult[punt[0]][punt[1]] = inputToList()[index + 2]
-        if inputToList()[-1] in gridResult:
-            teller[1] += 1
-            #print zm
-            #print counterScore(gridResult)
-            #print gridResult
-            if counterScore(gridResult) > highScore:
-                highScore = counterScore(gridResult)
-                highScoreList = []
-                highScoreList.append(EiwitStreng(gridResult, highScore))
-            if counterScore(gridResult) == highScore:
-                highScoreList.append(EiwitStreng(gridResult, highScore))
-        j = len(indexes) - 1
-        while True:
-            indexes[j] += 1
-            if indexes[j] < len(aListOfList[j]):
-                break
-            indexes[j] = 0
-            j -= 1
-            if j < 0:
-                return highScoreList
-
-def Monte(n):
-    counter = 0
+def Monte(iteraties):
+    
+    # maakt een list voor de mogelijke directions
     directions = ["l", "r", "u", "d"]
+    
+    # counter voor het aantal geprobeerde moves
+    counter = 0
+
+    # maakt de grid aan de hand van het eiwit
+    gridStart = makeGrid(eiwitList())
+
+    # zet het beginpunt op het midden van de grid en plaatst het tweede aminozuur rechts 
+    # van het eerste aminozuur om de rotatie-symmetrische oplossingen te prunen
+    punt = ((len(eiwitList()) - 1), (len(eiwitList()) - 1))
+    punt = moveAmino(punt, "r")
+    gridStart[punt[0]][punt[1]] = eiwitList()[1]
+
+    # houdt de best gevonden score bij van de gevonden eiwit vouwingen en voegt deze vouwing 
+    # toe aan de lijst van best gevonden scores
     highScore = 0
     highScoreList = []
-    gridStart = makeGrid(inputToList())
-    punt = ((len(inputToList()) - 1), (len(inputToList()) - 1))
-    print punt
-    punt = moveAmino(punt, "r")
-    gridStart[punt[0]][punt[1]] = inputToList()[1]
-    print gridStart
 
-    for i in range(n):
+    # voert het Monte Carlo algoritme n keer uit
+    for i in range(iteraties):
+
+        # zet de gridstart om in een numpy grid en reset het punt op het beginpunt (=het tweede aminozuur)
         gridResult = np.copy(gridStart)
-        puntStart = ((len(inputToList()) - 1), (len(inputToList())))
-        for i in inputToList()[2:]:
+        puntStart = ((len(eiwitList()) - 1), (len(eiwitList())))
+
+        # loop die het eiwit vouwingen laat doorlopen
+        for i in eiwitList()[2:]:
+
+            # onthoudt een niet toegestane move voor het huidige aminozuur
             forbidDirection = []
+
             while True:
+
+                counter += 1
+
+                # selecteert de locatie van het huidige aminozuur
                 punt = puntStart
+
+                # kiest een random direction en voert een move uit
                 direction = (randint(0, 3))
                 punt = moveAmino(punt, directions[direction])
-                #print directions[direction]
-                #print counter
+
+                # break als deze move is toegestaan
                 if gridResult[punt[0]][punt[1]] == '_':
-                    #print gridResult
                     break
+
+                # onthoudt de niet toegestane moves    
                 forbidDirection.append(directions[direction])
+
+                # break als alle moves niet zijn toegestaan
                 if len(forbidDirection) > 4:
                     break
-            #print directions[direction]
+            
+            # plaatst het huidige aminozuur op de grid en verzet het punt
             gridResult[punt[0]][punt[1]] = i
             puntStart = punt
 
+        # als de eindscore beter is dan de huidige beste score
+        if endScore(gridResult) < highScore:
 
-        if counterScore(gridResult) > highScore:
-            highScore = counterScore(gridResult)
+            # maak van deze eindscore de nieuwe beste score
+            highScore = endScore(gridResult)
+
+            # leeg de lijst van de voorgaande best gevonden vouwingen
             highScoreList = []
-            highScoreList.append(EiwitStreng(gridResult, highScore))
-        if counterScore(gridResult) == highScore:
+
+            # en voeg de nieuwe beste vouwing toe aan de lijst van best gevonden vouwingen
             highScoreList.append(EiwitStreng(gridResult, highScore))
 
-        #print gridResult
-        #counter +=1
-        #print counter
+        # als de eindscore net zo goed is als de huidige beste score
+        if endScore(gridResult) == highScore:
+
+            # voeg de nieuwe beste vouwing toe aan de lijst van best gevonden vouwingen
+            highScoreList.append(EiwitStreng(gridResult, highScore))
+
+    print ("Aantal uitgevoerde MonteCarlo:", iteraties)
+    print ("Aantal geprobeerde moves:", counter)
+
+    # return de best gevonden vouwingen
     return highScoreList
-
-
-print  inputToList()
-'''
-uitkomst = cproduct()
-
-print len(uitkomst)
-for i in uitkomst:
-    print i.score
-    print i.grid
-
-
-
-print time.clock() - start_time, "seconds"
-
-start_time = time.clock()
-'''
-monteUitkomst = Monte(10000)
-print len(monteUitkomst)
-for i in monteUitkomst:
-    print i.score
-    print i.grid
-
-print time.clock() - start_time, "seconds"

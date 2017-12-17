@@ -1,31 +1,5 @@
 from helpers import *
 
-class EiwitStreng:
-    def __init__(self, grid, score):
-        self.grid = grid
-        self.score = score
-
-# functie bepaald de eindscore van de vouwing van het eiwit
-def endScore(grid):
-
-    score = 0
-
-    # checkt voor elk punt op de grid of het een H bevat, en of het punt rechts of onder dit punt
-    # ook een H bevat om dit toe te voegen aan de totale score
-    for j in range(len(grid) - 1):
-        for k in range(len(grid[j]) - 1):
-
-            if grid[j][k] != '_' and grid[j][k][0] == 'H':
-                if grid[j+1][k] != '_' and grid[j+1][k][0] == 'H':
-                    score += 1
-                if grid[j][k+1] != '_' and grid[j][k+1][0] == 'H':
-                    score += 1
-
-    # berekent de totale score door de eindscore van de beginscore af te trekken
-    totalScore = startScore() - score 
-
-    return totalScore
-
 # functie maakt gebruik van het Brute Force algoritme om alle mogelijkheden af 
 # te gaan waarin het eiwit zich kan vouwen
 def brutePruning():
@@ -96,13 +70,13 @@ def brutePruning():
                 # leeg de lijst van voorgaande best gevonden vouwingen
                 highScoreList = []
 
-                # en voeg de niewe beste vouwing toe aan de lijst van best gevonden vouwingen
+                # en voeg de nieuwe beste vouwing toe aan de lijst van best gevonden vouwingen
                 highScoreList.append(EiwitStreng(gridResult, highScore))
 
             # als de eindscore net zo goed is als de huidige beste score
             if endScore(gridResult) == highScore:
 
-                # voeg de niewe beste vouwing toe aan de lijst van best gevonden vouwingen
+                # voeg de nieuwe beste vouwing toe aan de lijst van best gevonden vouwingen
                 highScoreList.append(EiwitStreng(gridResult, highScore))
 
         j = len(vouwing) - 1

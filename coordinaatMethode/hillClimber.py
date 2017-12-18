@@ -41,4 +41,4 @@ for i in best_score:
 
 
 
-hillClimber(Monte(10000))
+hillClimber(Monte(500000))

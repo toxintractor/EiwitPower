@@ -5,8 +5,9 @@ from coordinaatMethode.helpers import *
 from coordinaatMethode.monteCarlo import *
 from copy import deepcopy
 
-def simanneal(eiwitstreng):
-    eiwitstreng = eiwitstreng
+def simanneal(montecarloList):
+    print(montecarloList[0].coordinates)
+    eiwitstreng = montecarloList[0]
     print (eiwitroute(eiwitstreng))
     #visualPath(eiwitstreng)
 
@@ -50,7 +51,7 @@ def simanneal(eiwitstreng):
     visualPath(eiwitstreng)
     print (eiwitstreng.score)
     print (highscorescore)
-
+'''
 best_score = Monte(1000)
 
 print ('lengte: ', len(best_score))
@@ -59,8 +60,9 @@ for i in best_score:
     print (i.coordinates)
     print (i.streng)
     visualPath(i)
+'''
 
-simanneal(i)
+simanneal(Monte(10000))
 
 '''
 i = EiwitStreng(['P0', 'P1', 'P2', 'H3', 'H4', 'P5', 'P6', 'H7', 'H8', 'P9', 'P10', 'P11', 'P12', 'P13', 'H14', 'H15', 'H16', 'H17', 'H18', 'H19', 'H20', 'P21', 'P22', 'H23', 'H24', 'P25', 'P26', 'P27', 'P28', 'H29', 'H30', 'P31', 'P32', 'H33', 'P34', 'P35'],

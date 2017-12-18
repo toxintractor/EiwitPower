@@ -27,12 +27,9 @@ def simanneal(montecarloList):
         scoredifference = finalScore(nieuweroute, eiwitstreng) - counterFirst(eiwitstreng.streng)
 
         if scoredifference >= 0:
-            print ("de score in score:", eiwitstreng.score + scoredifference)
+            print ("de score nu:", eiwitstreng.score + scoredifference)
             eiwitstreng.score += scoredifference
             eiwitstreng.coordinates = nieuweroute
-            #print (eiwitstreng.score)
-            #print(time.clock() - start_time, "seconds")
-            #visualPath(eiwitstreng)
             start_time = time.clock()
             print(temperature)
 

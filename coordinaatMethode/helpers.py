@@ -6,6 +6,7 @@ import pylab as plt
 
 start_time = time.clock()
 
+#Containerclasse om eiwitinformatie in op te slaan.
 class EiwitStreng:
     def __init__(self, streng, score, coordinates):
         self.streng = streng
@@ -51,20 +52,25 @@ def visualPath(protein):
 
 # Functie vraagt input aan en zet het om in een array met index.
 def inputToList():
-    n = 0;
-    pt = []
-    # eiwitInput = raw_input("voer de eiwit in: ")
-    #eiwitInput = "hhphhhph"
-    eiwitInput = "HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH"
-    #eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
-    #eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
-    #eiwitInput = "HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
-    for i in eiwitInput.upper():
-        if i != "H" and i != "P" and i != "C":
-            print ("Het eiwit mag geen", i, "bevatten")
-            return "Het eiwit mag geen", i, "bevatten"
-        pt.append(i + str(n))
-        n += 1
+    while True:
+        fout = False
+        n = 0;
+        pt = []
+        eiwitInput = input("voer de eiwit in: ")
+        #eiwitInput = "hhphhhph"
+        #eiwitInput = "HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH"
+        #eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
+        #eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
+        #eiwitInput = "HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
+        for i in eiwitInput.upper():
+            if i != "H" and i != "P" and i != "C":
+                fout = True
+            pt.append(i + str(n))
+            n += 1
+        if fout == True:
+            print ("Je invoer mag alleen een H,P,C bevatten")
+        else:
+            break
 
     #eiwit = EiwitStreng(pt, counterFirst(pt), [])
 
@@ -112,7 +118,7 @@ def moveAmino(point, direction):
 
     return newPoint
 
-
+#Deze functie berekent de uiteindelijke score.
 def finalScore(coordinateList, protein):
     score = 0
     for i in range(len(coordinateList)):
@@ -141,6 +147,7 @@ def finalScore(coordinateList, protein):
     #print ('beginscore =',protein.score)
     return score - protein.score
 
+#Deze functie past een streng op twee willekeurige punten aan.
 def routeaanpas(eiwitstreng, route):
     directions = ["l", "r", "u", "d"]
     while True:
@@ -171,6 +178,7 @@ def routeaanpas(eiwitstreng, route):
             break
     return coordinaten
 
+#Deze functie berekent de route van een streng.
 def eiwitroute(eiwitstreng):
     #print (eiwitstreng.coordinates)
     #directions = [0 for i in range(len(eiwitstreng.coordinates[2:]))]

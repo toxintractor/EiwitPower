@@ -1,6 +1,6 @@
-from coordinaatMethode.helpers import *
+#from coordinaatMethode.helpers import *
 from coordinaatMethode.monteCarlo import *
-from coordinaatMethode.helpers import *
+from coordinaatMethode.simAnneal import *
 from coordinaatMethode.hillClimber import *
 
 if __name__ == '__main__':
@@ -26,5 +26,6 @@ if __name__ == '__main__':
     elif keuze == "3":
         print("hoeveel Monte Carlo iteraties wil je draaien voor je basis streng:")
         iteraties = int(input())
+        simanneal(Monte(iteraties))
 
 

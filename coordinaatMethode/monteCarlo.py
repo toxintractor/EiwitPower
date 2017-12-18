@@ -4,7 +4,8 @@ def Monte(n):
     directions = ["l", "r", "u", "d"]
     highScore = 0
     highScoreList = []
-    protein = EiwitStreng(inputToList(), counterFirst(inputToList()), [])
+    inputList = inputToList()
+    protein = EiwitStreng(inputList, counterFirst(inputList), [])
     coordinateStart = protein.coordinates[:]
     print (protein.streng)
     print("Basis streng wordt berekend, even geduld aub...")
@@ -56,18 +57,6 @@ def Monte(n):
                 # counter +=1
                 # print counter
     return highScoreList
-'''
-best_score = Monte(100000)
 
-print ('lengte: ', len(best_score))
-
-for i in best_score:
-    print (i.score)
-    print (i.coordinates)
-    print (i.streng)
-    visualPath(i)
-
-print (time.clock() - start_time, "seconds")
-'''
 
 

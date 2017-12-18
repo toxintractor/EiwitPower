@@ -55,7 +55,7 @@ def Monte(n):
                 # counter +=1
                 # print counter
     return highScoreList
-
+'''
 best_score = Monte(100)
 
 print ('lengte: ', len(best_score))
@@ -65,3 +65,4 @@ for i in best_score:
     print (i.score)
     print (i.coordinates)
     print (i.streng)
+'''

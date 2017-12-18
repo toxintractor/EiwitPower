@@ -51,7 +51,7 @@ def simanneal(eiwitstreng):
     print (eiwitstreng.score)
     print (highscorescore)
 
-best_score = Monte(10)
+best_score = Monte(1000)
 
 print ('lengte: ', len(best_score))
 for i in best_score:

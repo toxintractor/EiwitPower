@@ -55,7 +55,7 @@ def inputToList():
     pt = []
     # eiwitInput = raw_input("voer de eiwit in: ")
     #eiwitInput = "hhphhhph"
-    eiwitInput = "PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP"
+    eiwitInput = "HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH"
     #eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
     #eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
     #eiwitInput = "HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
@@ -85,7 +85,6 @@ def counterFirst(indexList):
             counter += 1
         elif indexList[i][0] == "C" and indexList[i + 1][0] == "C":
             counter += 5
-    print ("first score:", counter)
     return counter
 
 

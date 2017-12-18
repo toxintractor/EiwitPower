@@ -1,5 +1,5 @@
 from coordinaatMethode.helpers import *
-from coordinaatMethode.helpers import *
+from coordinaatMethode.monteCarlo import *
 
 def simanneal(eiwitstreng):
     eiwitstreng = eiwitstreng
@@ -28,7 +28,7 @@ def simanneal(eiwitstreng):
     print (eiwitstreng.score)
     print (aantal)
 
-best_score = Monte(10)
+best_score = Monte(1000)
 
 print ('lengte: ', len(best_score))
 for i in best_score:

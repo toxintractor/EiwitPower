@@ -7,7 +7,7 @@ if __name__ == '__main__':
     print ("kies de nummer van het algoritme dat je wilt gebruiken:\n"
            "(1) Montecarlo\n"
            "(2) Hillclimbing\n"
-           "(3) Simmulated annealing\n")
+           "(3) Simmulated annealing")
     keuze = input()
 
     if keuze == "1":

@@ -7,7 +7,7 @@ if __name__ == '__main__':
     print ("kies de nummer van het algoritme dat je wilt gebruiken:\n"
            "(1) Montecarlo\n"
            "(2) Hillclimbing\n"
-           "(3) Simmulated annealing")
+           "(3) Simmulated annealing\n")
     keuze = input()
 
     if keuze == "1":
@@ -26,4 +26,5 @@ if __name__ == '__main__':
     elif keuze == "3":
         print("hoeveel Monte Carlo iteraties wil je draaien voor je basis streng:")
         iteraties = int(input())
+
 

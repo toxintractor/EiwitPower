@@ -1,0 +1,18 @@
+De verkregen resultaten zijn berekend door middel van een hill climber algoritme.
+Dit betekent dat er op basis van het monte carlo principe een aantal willekeurige toegestane vouwing worden gevormd. De hill climber bouwt voort op de oplossing met de hoogste score die de monte carlo heeft gevonden. Deze vouwing krijgt op 2 plaatsten een willekeurige aanpassing. Als de hierdoor nieuw ontstane vouwing is toegestaan en een betere score heeft, dan wordt deze als nieuw uitgangspunt gebruikt. Dit proces wordt herhaald voor het aantal opgegeven iteraties. Uiteindelijk wordt de oplossingen met de beste score gereturnd. Van deze oplossing kan echter niet gezegd worden dat dit een best mogelijke oplossing is. De hypothetische beste score is -26.
+
+Eiwit: HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH
+
+b4-1
+Iteraties: 1000
+Beste Score: -16
+
+b4-2
+Iteraties: 100.000
+Beste Score: -17
+
+b4-3
+Iteraties: 100.000
+Beste Score: -16
+
+Als we deze resultaten vergelijken met die van de de monte carlo, dan kunnen we concluderen dat de hill climber significant betere resultaten krijgt waar deze minder iteraties voor nodig heeft. Opnieuw lijkt de hill climber geen betere score te kunnen vinden dan de monte carlo. We weten alleen opnieuw niet hoe ver de beste gevonden score van de hill climber van de optimale score verwijderd zit.

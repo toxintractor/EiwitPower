@@ -1,0 +1,9 @@
+De verkregen resultaten zijn berekend door middel van een brute force algoritme.
+Dit betekent dat alle toegestane vouwingen zijn doorlopen, en van al die vouwingen de score is berekend. De best gevonden score is dus ook de best mogelijke score voor dit eiwit.
+Het aantal vouwingen die deze score hebben zijn unieke oplossingen, dus er zijn geen rotatie- of spiegelbeeld symmetrische oplossingen meegeteld.
+
+Eiwit: HHPHHHPH
+
+Iteraties: 4096
+Beste score: -3
+Aantal vouwingen met de beste score: 6

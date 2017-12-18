@@ -1,0 +1,30 @@
+De verkregen resultaten zijn berekend door middel van een simulated annealing algoritme.
+Dit betekent dat er op basis van het monte carlo principe een aantal willekeurige toegestane vouwing worden gevormd. De simulated annealing bouwt voort op de oplossing met de hoogste score die de monte carlo heeft gevonden. Deze vouwing krijgt op 2 plaatsten een willekeurige aanpassing. Het verschil met de hill climber is dat de simulated annealing ook een slechtere score kan accepteren. Op deze manier kan er vermeden worden om te eindigen in een lokaal maximum. Door eerst een slechtere score te accepteren kan er later misschien op een hogere score worden uitgekomen. Of de lagere score wordt geaccepteerd, wordt bepaald door de temperatuur functie. Er wordt een het begin een temperatuur vastgelegd, en bij elke iteratie wordt de temperatuur lager. De temperatuur wordt gebruikt om een kans te berekenen. Naarmate de temperatuur lager wordt, wordt de kans groter om een lagere gevonden score niet aan te nemen. Wanneer die kans te groot wordt, dan wordt het algoritme gestopt en wordt de tot dan toe beste gevonden oplossing gereturned. De hypothetische beste score is -16.
+
+Eiwit: PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP
+
+b3-1
+Iteraties: 1000
+Beste Score: -12
+
+b3-2
+Iteraties: 1000
+Beste Score: -11
+
+b3-3
+Iteraties: 1000
+Beste Score: -11
+
+b3-4
+Iteraties: 100.000
+Beste Score: -12
+
+b3-5
+Iteraties: 100.000
+Beste Score: -12
+
+b3-6
+Iteraties: 100.000
+Beste Score: -12
+
+Als we deze resultaten vergelijken met die van de de monte carlo en de hill climber, dan kunnen we concluderen dat de simulated annealing ongeveer dezelfde resultaten geeft als de hill climber. Wat opvalt is dat de simulated annealing geen betere scores heeft gevonden dan de hill climber. Door Chen et al. weten we dat het globale maxiumum van -14 niet is bereikt. 

@@ -1,0 +1,26 @@
+De verkregen resultaten zijn berekend door middel van een monte carlo algoritme.
+Dit betekent dat er voor het aantal opgegeven iteraties geprobeerd is een willekeurige toegestane vouwing van het eiwit te formeren. Wanneer dit is gelukt, wordt de score van deze vouwing berekend. Van alle gevonden oplossingen word(en) die met de beste score gereturnd. Van deze oplossing kan echter niet gezegd worden dat dit een best mogelijke oplossing is. De hypothetische beste score is -26.
+
+Eiwit: HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH
+
+b4-1
+Iteraties: 100.000
+Beste Score: -13
+
+b4-2
+Iteraties: 100.000
+Beste Score: -13
+
+b4-3
+Iteraties: 100.000
+Beste Score: -13
+
+b4-4
+Iteraties: 100.000
+Beste Score: -13
+
+b4-5
+Iteraties: 1.000.000
+Beste Score: -17
+
+We kunnen de resultaten niet langer vergelijken met de gevonden score van het artikel van M. Chen et al. omdat daar een ander eiwit wordt gebruikt. Opnieuw kunnen we zien dat naarmate er meer iteraties worden uitgevoerd de kans groter is om een beter score te vinden, en ook lijkt de score verbetering groter te worden dan bij de kortere eiwitten. We weten alleen niet of deze score verder bij de optimale score verwijderd is dan voorheen omdat deze dus niet bekend is. 

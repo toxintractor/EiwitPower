@@ -57,7 +57,7 @@ def Monte(n):
                 # print counter
     return highScoreList
 
-best_score = Monte(100000)
+best_score = Monte(1000000)
 
 print ('lengte: ', len(best_score))
 

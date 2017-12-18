@@ -73,4 +73,4 @@ visualPath(i)
 '''
 
 
-#print (time.clock() - start_time, "seconds")
+

@@ -55,7 +55,7 @@ def inputToList():
     pt = []
     # eiwitInput = raw_input("voer de eiwit in: ")
     #eiwitInput = "hhphhhph"
-    eiwitInput = "CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC"
+    eiwitInput = "HPHPPHHPHPPHPHHPPHPH"
     #eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
     #eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
     #eiwitInput = "HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"

@@ -56,16 +56,15 @@ def Monte(n):
                 # counter +=1
                 # print counter
     return highScoreList
-'''
-best_score = Monte(10000)
+
+best_score = Monte(100000)
 
 print ('lengte: ', len(best_score))
 
 for i in best_score:
-    #visualPath(i)
     print (i.score)
     print (i.coordinates)
     print (i.streng)
+    visualPath(i)
 
 print (time.clock() - start_time, "seconds")
-'''

@@ -1,7 +1,7 @@
 from coordinaatMethode.helpers import *
 from coordinaatMethode.monteCarlo import *
 
-def simanneal(eiwitstreng):
+def hillClimber(eiwitstreng):
     eiwitstreng = eiwitstreng
     print (eiwitroute(eiwitstreng))
     #visualPath(eiwitstreng)
@@ -38,4 +38,4 @@ for i in best_score:
 
 
 
-simanneal(i)
+hillClimber(i)

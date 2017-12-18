@@ -2,7 +2,7 @@ import math
 from mpmath import rand, exp
 
 from coordinaatMethode.helpers import *
-from coordinaatMethode.experimenteren import *
+from coordinaatMethode.monteCarlo import *
 from copy import deepcopy
 
 def simanneal(eiwitstreng):

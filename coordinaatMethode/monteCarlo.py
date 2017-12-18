@@ -1,4 +1,4 @@
-from helpers import *
+from coordinaatMethode.helpers import *
 
 def Monte(n):
     directions = ["l", "r", "u", "d"]

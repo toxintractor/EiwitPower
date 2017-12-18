@@ -13,6 +13,7 @@ def simanneal(montecarloList):
 
 
     temperature = 5
+    aantal = 0
     start_time = time.clock()
     highscorestreng = eiwitstreng.coordinates[:]
     highscorescore = deepcopy(eiwitstreng.score)
@@ -44,11 +45,13 @@ def simanneal(montecarloList):
             eiwitstreng.coordinates = nieuweroute
             print(scoredifference)
             print("de scoredifference:", math.exp(scoredifference/temperature), ',', rand())
+        aantal += 1
 
         temperature *=  0.99995
     eiwitstreng.coordinates = highscorestreng
     eiwitstreng.score = highscorescore
     print(eiwitstreng.score)
+    print (aantal)
     visualPath(eiwitstreng)
     print (highscorescore)
 '''

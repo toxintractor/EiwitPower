@@ -48,8 +48,8 @@ def simanneal(montecarloList):
         temperature *=  0.99995
     eiwitstreng.coordinates = highscorestreng
     eiwitstreng.score = highscorescore
+    print(eiwitstreng.score)
     visualPath(eiwitstreng)
-    print (eiwitstreng.score)
     print (highscorescore)
 '''
 best_score = Monte(1000)
@@ -62,7 +62,7 @@ for i in best_score:
     visualPath(i)
 '''
 
-simanneal(Monte(10000))
+simanneal(Monte(100000))
 
 '''
 i = EiwitStreng(['P0', 'P1', 'P2', 'H3', 'H4', 'P5', 'P6', 'H7', 'H8', 'P9', 'P10', 'P11', 'P12', 'P13', 'H14', 'H15', 'H16', 'H17', 'H18', 'H19', 'H20', 'P21', 'P22', 'H23', 'H24', 'P25', 'P26', 'P27', 'P28', 'H29', 'H30', 'P31', 'P32', 'H33', 'P34', 'P35'],

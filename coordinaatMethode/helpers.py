@@ -35,6 +35,9 @@ def visualPath(protein):
         if protein.streng[i][0] == "P":
             G.add_node(protein.streng[i], pos = (protein.coordinates[i][0], protein.coordinates[i][1]))
             colors.append('b')
+        if protein.streng[i][0] == "C":
+            G.add_node(protein.streng[i], pos = (protein.coordinates[i][0], protein.coordinates[i][1]))
+            colors.append('y')
     G.add_path(protein.streng)
     '''
     for i in range(len(proteinString)):
@@ -51,12 +54,13 @@ def inputToList():
     n = 0;
     pt = []
     # eiwitInput = raw_input("voer de eiwit in: ")
-    eiwitInput = "hhphhhph"
-    #eiwitInput = "HPHPPHHPHPPHPHHPPHPH"
+    #eiwitInput = "hhphhhph"
+    eiwitInput = "PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP"
     #eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
     #eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
+    #eiwitInput = "HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
     for i in eiwitInput.upper():
-        if i != "H" and i != "P":
+        if i != "H" and i != "P" and i != "C":
             print ("Het eiwit mag geen", i, "bevatten")
             return "Het eiwit mag geen", i, "bevatten"
         pt.append(i + str(n))
@@ -75,6 +79,13 @@ def counterFirst(indexList):
     for i in range(len(indexList) - 1):
         if indexList[i][0] == "H" and indexList[i + 1][0] == "H":
             counter += 1
+        elif indexList[i][0] == "H" and indexList[i + 1][0] == "C":
+            counter += 1
+        elif indexList[i][0] == "C" and indexList[i + 1][0] == "H":
+            counter += 1
+        elif indexList[i][0] == "C" and indexList[i + 1][0] == "C":
+            counter += 5
+    print ("first score:", counter)
     return counter
 
 
@@ -110,10 +121,22 @@ def finalScore(coordinateList, protein):
             j = coordinateList.index([coordinateList[i][0], coordinateList[i][1] + 1])
             if protein.streng[i][0] == 'H' and protein.streng[j][0] == 'H':
                 score += 1
+            elif protein.streng[i][0] == 'H' and protein.streng[j][0] == 'C':
+                score += 1
+            elif protein.streng[i][0] == 'C' and protein.streng[j][0] == 'H':
+                score += 1
+            elif protein.streng[i][0] == 'C' and protein.streng[j][0] == 'C':
+                score += 5
         if ([coordinateList[i][0] + 1, coordinateList[i][1]]) in coordinateList:
             j = coordinateList.index([coordinateList[i][0] + 1, coordinateList[i][1]])
             if protein.streng[i][0] == 'H' and protein.streng[j][0] == 'H':
                 score += 1
+            elif protein.streng[i][0] == 'H' and protein.streng[j][0] == 'C':
+                score += 1
+            elif protein.streng[i][0] == 'C' and protein.streng[j][0] == 'H':
+                score += 1
+            elif protein.streng[i][0] == 'C' and protein.streng[j][0] == 'C':
+                score += 5
                 # print i[j]
 
     #print ('beginscore =',protein.score)
